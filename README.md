@@ -9,3 +9,9 @@
 ![image](https://user-images.githubusercontent.com/49913741/229983091-92b52cce-f640-4115-a05d-ac11c2e4c36b.png)
 
 
+
+5. configuracion .env
+
+
+
+
