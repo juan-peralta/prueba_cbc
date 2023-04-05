@@ -63,25 +63,36 @@ class EmployeeController extends Controller
 
     public function insertEmployees(Request $request)
     {
-
-        $firstname = $request->input('firstname');
-        $lastname = $request->input('lastname');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $birthday = $request->input('birthday');
-        $supervisedby_id = $request->input('supervisedby_id');
-        DB::insert("INSERT INTO employee (firstname,lastname,email,phone,birthday,supervisedby_id) VALUES (?,?,?,?,?,?)", [$firstname, $lastname, $email, $phone, $birthday, $supervisedby_id]);
-
-        return response()->json(
-            array(
-                'status' => 201
-            )
-        );
+        if ($request->filled(['firstname', 'lastname', 'email', 'phone', 'birthday', 'supervisedby_id'])) {
+            $firstname = $request->input('firstname');
+            $lastname = $request->input('lastname');
+            $email = $request->input('email');
+            $phone = $request->input('phone');
+            $birthday = $request->input('birthday');
+            $supervisedby_id = $request->input('supervisedby_id');
+            DB::insert("INSERT INTO employee (firstname,lastname,email,phone,birthday,supervisedby_id) VALUES (?,?,?,?,?,?)", [$firstname, $lastname, $email, $phone, $birthday, $supervisedby_id]);
+    
+            return response()->json(
+                array(
+                    'status' => 201,
+                    'mensaje' => 'Registro Creado'
+                )
+            );
+        } else {
+            return response()->json(
+                array(
+                    'status' => 400,
+                    'message' => 'Existen campos vacios'
+                )
+            );
+        }
     }
-
+    
 
     public function updateEmployees(Request $request, $id)
     {
+        if ($request->filled(['firstname', 'lastname', 'email', 'phone', 'birthday', 'supervisedby_id'])) {
+
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
@@ -101,8 +112,17 @@ class EmployeeController extends Controller
             ]);
         return response()->json(
             array(
-                'status' => 200
+                'status' => 200,
+                'mensaje' => 'Registro actualizado'
             )
         );
+    }else{
+        return response()->json(
+            array(
+                'status' => 400,
+                'message' => 'Existen campos vacios'
+            )
+        ); 
+    }
     }
 }
