@@ -10,8 +10,6 @@
 
 
 
-5. configuracion .env
-
 
 
 
