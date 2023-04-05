@@ -10,18 +10,6 @@
 
 
 
-5. configuracion .env
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=cbc
-DB_USERNAME=root
-DB_PASSWORD=
-
-
-DB_USERNAME=tu usuario bd
-DB_PASSWORD=tu password 
 
 
 
